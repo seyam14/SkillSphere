@@ -22,13 +22,8 @@ const Banner = () => {
               </p>
               <div className="inline-flex mt-4">
                 <div className="text-center">
-                  <input
-                    type="text"
-                    placeholder="Search here...."
-                    className=" rounded-l py-2 px-4 outline-none"
-                  />
-                  <button className="bg-red-500 text-white rounded-r py-2 px-4 hover:bg-blue-600">
-                    Search
+                  <button className="bg-red-500 text-white  py-2 px-4 hover:bg-blue-600">
+                    Courses
                   </button>
                 </div>
               </div>
