@@ -1,18 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
 import './index.css'
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import Main from './Layout/Main';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
+import AddCourse from './Pages/AddCourse/AddCourse';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
     },
+    {
+      path: '/addcourse',
+      element: <AddCourse></AddCourse>
+  },
     ],
   },
 ]);
