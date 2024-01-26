@@ -25,7 +25,7 @@ const Login = () => {
                 email: result.user?.email,
                 name: result.user?.displayName
             }
-            axios.post('/user', userInfo)
+            axios.post('http://localhost:5000/user', userInfo)
             .then(res =>{
                 console.log(res.data);
                 Swal.fire("Login Successful!", "You are now logged in.", "success");
