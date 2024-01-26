@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
+import Category from "../Category/Category";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
         <title>LMS|Home</title>
        </Helmet> 
             <Banner></Banner>
+            <Category></Category>
         </div>
     );
 };
