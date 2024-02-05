@@ -27,8 +27,11 @@ const Navbar = () => {
         <NavLink className="font-bold"  to='/contact'>Contact</NavLink>
     </li>
     <li>
-    <NavLink className="font-bold "  to='/about'>About</NavLink>
+        <NavLink className="font-bold"  to='/faq'>FAQ</NavLink>
     </li>
+    {/* <li>
+    <NavLink className="font-bold "  to='/about'>About</NavLink>
+    </li> */}
    
 </>
 

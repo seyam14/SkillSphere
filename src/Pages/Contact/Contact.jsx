@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import CBanner from './CBanner';
+import { Helmet } from 'react-helmet';
 
 
 const Contact = () => {
@@ -21,6 +22,10 @@ const Contact = () => {
       };
     return (
         <div className="">
+        <Helmet>
+        <title>LMS|Contact    
+        </title>
+       </Helmet>
             <CBanner></CBanner>
         <div className="lg:flex  justify-evenly max-w-screen-xl mx-auto shadow-2xl bg-white  rounded-xl items-center my-10 ">
           <div className="m-14 gap-5 ">

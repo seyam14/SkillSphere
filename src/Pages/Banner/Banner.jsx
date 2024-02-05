@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Banner = () => {
@@ -22,8 +23,8 @@ const Banner = () => {
               </p>
               <div className="inline-flex mt-4">
                 <div className="text-center">
-                  <button className="bg-red-500 text-white  py-2 px-4 hover:bg-blue-600">
-                    Courses
+                  <button  className="bg-red-500 text-white  py-2 px-4 hover:bg-blue-600">
+                   <Link to='/courses'>Courses</Link> 
                   </button>
                 </div>
               </div>
