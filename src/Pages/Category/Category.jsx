@@ -17,7 +17,6 @@ const Category = () => {
 
     return (
         <Tabs className='mt-5'> 
-        <div className='m-4 text-5xl font-bold  text-center'> Browse By Category</div>
         <TabList>
           <Tab>Web Development</Tab>
           <Tab>Digital Marketing</Tab>
