@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Category from "../Category/Category";
+import FAQ from "../FAQ/FAQ";
 
 
 
@@ -18,8 +19,7 @@ const Home = () => {
             heading="Browse By Category"></SectionTitle>
             <Category></Category>
             </div>
-            
-            
+            <FAQ></FAQ>
         </div>
     );
 };

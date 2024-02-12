@@ -16,7 +16,7 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import AddCourse from './Pages/AddCourse/AddCourse';
 import Contact from './Pages/Contact/Contact';
 import Courses from './Pages/Courses/Courses';
-import FAQ from './Pages/FAQ/FAQ';
+import AboutPage from './Pages/AboutPage/AboutPage';
 
 const router = createBrowserRouter([
   {
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
       element: <Contact></Contact>
     },
     {
-      path: '/faq',
-      element: <FAQ></FAQ>
+      path: '/about',
+      element:<AboutPage></AboutPage>
     },
     ],
   },

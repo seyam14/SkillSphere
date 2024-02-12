@@ -2,14 +2,10 @@
 /* eslint-disable react-refresh/only-export-components */
 
 import { useState } from "react";
-import { Helmet } from "react-helmet";
 
 const FAQ = () => {
   return (
-    <div>
-       <Helmet>
-        <title>LMS|FAQ</title>
-       </Helmet>
+    <div>   
     <section className="relative  z-20 overflow-hidden pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
