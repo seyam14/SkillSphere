@@ -2,11 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/LMS.svg';
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const Navbar = () => {
 
-
+  const [isAdmin]=useAdmin();
+  console.log(isAdmin);
     const { user, logout } = useContext(AuthContext);
     
     const handleLogout = () => {
@@ -18,11 +20,18 @@ const Navbar = () => {
         <NavLink className="font-bold " to='/'>Home</NavLink>
     </li>
     <li>
-       <NavLink className="font-bold"  to='/addcourse'>AddCourse</NavLink>
-    </li>
-    <li>
         <NavLink className="font-bold"  to='/courses'>Courses</NavLink>
     </li>
+    {
+      user && isAdmin && <li>
+      <NavLink className="font-bold"  to='/dashboard/adminHome'>Dashboard</NavLink>
+  </li> 
+    }
+    {
+      user && !!isAdmin  ? "" : <li>
+      <NavLink className="font-bold"  to='/dashboard/userHome'>Dashboard</NavLink>
+  </li> 
+    }
     <li>
         <NavLink className="font-bold"  to='/contact'>Contact</NavLink>
     </li>

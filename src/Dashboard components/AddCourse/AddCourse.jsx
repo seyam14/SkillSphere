@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const AddCourse = () => {

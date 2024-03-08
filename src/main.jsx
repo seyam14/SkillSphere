@@ -13,10 +13,26 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
-import AddCourse from './Pages/AddCourse/AddCourse';
+import AddCourse from './Dashboard components/AddCourse/AddCourse';
 import Contact from './Pages/Contact/Contact';
 import Courses from './Pages/Courses/Courses';
 import AboutPage from './Pages/AboutPage/AboutPage';
+import Dashboard from './Layout/Dashboard';
+import UserHome from './Dashboard components/UserHome/UserHome';
+import ActivityLog from './Dashboard components/ActivityLog/ActivityLog';
+import UserProfileSettings from './Dashboard components/UserProfileSettings/UserProfileSettings';
+import CourseClasses from './Dashboard components/CourseClasses/CourseClasses';
+import AdminHome from './Dashboard components/AdminHome/AdminHome';
+import AllUsers from './Dashboard components/AllUsers/AllUsers';
+
+import {
+  QueryClient,
+  QueryClientProvider
+  // useQuery,
+} from '@tanstack/react-query'
+import PrivateRoute from './Route/PrivateRoute';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -38,10 +54,6 @@ const router = createBrowserRouter([
         element: <Register></Register>
     },
     {
-      path: '/addcourse',
-      element: <AddCourse></AddCourse>
-    },
-    {
       path: '/courses',
       element: <Courses></Courses>,
       loader : () => fetch('https://skillsphere-server-side.vercel.app/addcourse'),
@@ -56,12 +68,50 @@ const router = createBrowserRouter([
     },
     ],
   },
+  {
+    path: "dashboard",
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> ,
+    children: [
+      {
+        path: 'userHome',
+        element: <UserHome></UserHome>
+      },
+      {
+        path: 'activity',
+        element: <ActivityLog></ActivityLog>
+      },
+      {
+        path: 'settings',
+        element: <UserProfileSettings></UserProfileSettings>
+      },
+      {
+        path: 'classes',
+        element: <CourseClasses></CourseClasses>
+      },
+        // admin 
+        {
+          path: 'adminHome',
+          element: <AdminHome></AdminHome>
+          
+        },
+        {
+          path: 'users',
+          element:<AllUsers></AllUsers>
+        },
+        {
+          path: 'addcourse',
+          element: <AddCourse></AddCourse>
+        },
+    ],
+  }, 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-    <RouterProvider router={router} />
-    </AuthProvider>
-  </React.StrictMode>,
+  <AuthProvider>
+    <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+    </QueryClientProvider>
+  </AuthProvider>
+</React.StrictMode>,
 )
