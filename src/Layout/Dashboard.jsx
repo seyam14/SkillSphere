@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 // import useAdmin from "../Hooks/useAdmin";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUsers } from "react-icons/fa";
-import { SiGoogleclassroom,SiWheniwork } from "react-icons/si";
+import { SiCoursera, SiGoogleclassroom,SiWheniwork } from "react-icons/si";
 import { RiUserSettingsFill } from "react-icons/ri";
 
 const Dashboard = () => {
@@ -14,10 +14,10 @@ const Dashboard = () => {
     return (
         <div className="flex">
      <Helmet>
-        <title>FitFF|Dashboard</title>
-     </Helmet> 
+        <title>LMS|Dashboard</title>
+     </Helmet>
             {/* dashboard side bar */}
-            <div className="w-64 min-h-screen bg-purple-400">
+            <div className="w-64 min-h-screen bg-sky-400">
                 <ul className="menu p-4">
                     {
                         isAdmin && 
@@ -34,6 +34,7 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink to="/dashboard/addcourse">
+                                <SiCoursera/>
                                 AddCourse</NavLink>
                             </li>
 
