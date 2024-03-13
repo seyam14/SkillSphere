@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-// import useAdmin from "../Hooks/useAdmin";
+import useAdmin from "../Hooks/useAdmin";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { SiCoursera, SiGoogleclassroom,SiWheniwork } from "react-icons/si";
@@ -7,9 +7,9 @@ import { RiUserSettingsFill } from "react-icons/ri";
 
 const Dashboard = () => {
 
-    // const [isAdmin] = useAdmin();
-    // console.log(isAdmin);
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
+    // const isAdmin = true;
 
     return (
         <div className="flex">
@@ -20,7 +20,7 @@ const Dashboard = () => {
             <div className="w-64 min-h-screen bg-sky-400">
                 <ul className="menu p-4">
                     {
-                        isAdmin && 
+                        isAdmin ?
                         <>
                             <li>
                                 <NavLink to="/dashboard/adminHome">
@@ -39,11 +39,8 @@ const Dashboard = () => {
                             </li>
 
                         </>
-                    }
 
-                    {
-
-                        isAdmin === false &&  
+                   :
                         <>
                                 <li>
                                     <NavLink to="/dashboard/userHome">
@@ -66,7 +63,7 @@ const Dashboard = () => {
                                     Classes</NavLink>
                                 </li>
                         </>
-                    }
+                  }
                     
                     {/* shared nav links */}
                     <div className="divider"></div>
