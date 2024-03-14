@@ -23,15 +23,11 @@ const Navbar = () => {
         <NavLink className="font-bold"  to='/courses'>Courses</NavLink>
     </li>
     {
-      user && isAdmin && <li>
-      <NavLink className="font-bold"  to='/dashboard/adminHome'>Dashboard</NavLink>
-  </li> 
-    }
-    {
-      user && !!isAdmin  ? "" : <li>
-      <NavLink className="font-bold"  to='/dashboard/userHome'>Dashboard</NavLink>
-  </li> 
-    }
+            user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+        }
+        {
+            user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+        }
     <li>
         <NavLink className="font-bold"  to='/contact'>Contact</NavLink>
     </li>

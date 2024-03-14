@@ -9,7 +9,6 @@ const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     console.log(isAdmin);
-    // const isAdmin = true;
 
     return (
         <div className="flex">
@@ -20,8 +19,7 @@ const Dashboard = () => {
             <div className="w-64 min-h-screen bg-sky-400">
                 <ul className="menu p-4">
                     {
-                        isAdmin ?
-                        <>
+                        isAdmin ?  <>
                             <li>
                                 <NavLink to="/dashboard/adminHome">
                                     <FaHome></FaHome>
@@ -39,7 +37,6 @@ const Dashboard = () => {
                             </li>
 
                         </>
-
                    :
                         <>
                                 <li>
