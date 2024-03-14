@@ -15,7 +15,7 @@ const Register = () => {
       const name = form.get("name");
       const email = form.get("email");
       const password = form.get("password");
-      const photo =form.get("photo")
+      const phoneNumber =form.get("phoneNumber")
   
       // Check if the password meets your criteria
       const message = checkPasswordValidity(password);
@@ -32,7 +32,7 @@ const Register = () => {
           console.log(result.user);
           const createdAt = result.user?.metadata?.creationTime;
           // eslint-disable-next-line no-unused-vars
-          const user = {name,photo, email, createdAt: createdAt };
+          const user = {name,phoneNumber, email, createdAt: createdAt };
   
           // Send user data to your server (Assuming you have a server)
           fetch('http://localhost:5000/user', {
@@ -145,12 +145,12 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo URL</span>
+                <span className="label-text">Phone number</span>
               </label>
               <input
-                type="photo"
-                placeholder="Photo"
-                name="photo"
+                type="text"
+                placeholder="Phone number"
+                name="phoneNumber"
                 className="input input-bordered"
               />
             </div>
