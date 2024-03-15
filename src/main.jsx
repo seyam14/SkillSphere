@@ -21,10 +21,8 @@ import Dashboard from './Layout/Dashboard';
 import UserHome from './Dashboard components/UserHome/UserHome';
 import ActivityLog from './Dashboard components/ActivityLog/ActivityLog';
 import UserProfileSettings from './Dashboard components/UserProfileSettings/UserProfileSettings';
-import CourseClasses from './Dashboard components/CourseClasses/CourseClasses';
 import AdminHome from './Dashboard components/AdminHome/AdminHome';
 import AllUsers from './Dashboard components/AllUsers/AllUsers';
-
 import {
   QueryClient,
   QueryClientProvider
@@ -83,10 +81,6 @@ const router = createBrowserRouter([
       {
         path: 'settings',
         element: <UserProfileSettings></UserProfileSettings>
-      },
-      {
-        path: 'classes',
-        element: <CourseClasses></CourseClasses>
       },
         // admin 
         {

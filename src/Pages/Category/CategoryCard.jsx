@@ -19,8 +19,8 @@ const CategoryCard = ({cart}) => {
           <h2 ><span className="font-bold "> Course DeadLine:</span> {DeadLine}</h2>
           <h2><span className="font-bold "> Price : </span>{Price}</h2>
           <h2><span className="font-bold ">Description: </span>{Description}</h2>
-          <Link to ={`/courseDetails/${_id}`} >
-            <button className="btn btn-neutral">More details</button>
+          <Link to ={`/Dashboard/UserCourses/${_id}`} >
+            <button className="btn btn-neutral">add to cart</button>
           </Link>
         </div>
         </div>

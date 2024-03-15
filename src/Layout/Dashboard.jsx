@@ -47,7 +47,7 @@ const Dashboard = () => {
                                 <li>
                                     <NavLink to="/dashboard/activity">
                                     <SiWheniwork />
-                                    Activity Log</NavLink>
+                                    Activity</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/settings">
@@ -55,9 +55,9 @@ const Dashboard = () => {
                                     Profile Settings</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/classes">
+                                    <NavLink to="/dashboard/userCourses">
                                     <SiGoogleclassroom />
-                                    Classes</NavLink>
+                                    Courses</NavLink>
                                 </li>
                         </>
                   }
