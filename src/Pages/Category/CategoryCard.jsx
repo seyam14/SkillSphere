@@ -1,7 +1,7 @@
 // CategoryCard.js
 import Swal from 'sweetalert2';
 
-const CategoryCard = ({ cart }) => {
+const CategoryCard = ({ cart, userEmail }) => {
     const { CourseTitle, DeadLine, Description, Price } = cart;
 
     const addToCart = () => {
@@ -16,8 +16,9 @@ const CategoryCard = ({ cart }) => {
             confirmButtonText: 'Yes, add it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Store cart data in local storage
+                // Store cart data in local storage including user email
                 const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+                cart.userEmail = userEmail; // Associate user email with the cart
                 cartData.push(cart);
                 localStorage.setItem("cart", JSON.stringify(cartData));
                 Swal.fire(
