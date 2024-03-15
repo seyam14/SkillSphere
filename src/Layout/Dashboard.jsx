@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import useAdmin from "../Hooks/useAdmin";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUsers } from "react-icons/fa";
-import { SiCoursera, SiGoogleclassroom,SiWheniwork } from "react-icons/si";
+import { SiCoursera,SiWheniwork } from "react-icons/si";
 import { RiUserSettingsFill } from "react-icons/ri";
 
 const Dashboard = () => {
@@ -53,11 +53,6 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/settings">
                                     <RiUserSettingsFill />
                                     Profile Settings</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/userCourses">
-                                    <SiGoogleclassroom />
-                                    Courses</NavLink>
                                 </li>
                         </>
                   }
