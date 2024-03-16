@@ -29,6 +29,9 @@ const Navbar = () => {
             user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
         }
     <li>
+    <NavLink className="font-bold "  to='/recommendations'>Recommendations</NavLink>
+    </li>
+    <li>
         <NavLink className="font-bold"  to='/contact'>Contact</NavLink>
     </li>
     <li>

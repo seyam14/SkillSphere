@@ -29,6 +29,8 @@ import {
   // useQuery,
 } from '@tanstack/react-query'
 import PrivateRoute from './Route/PrivateRoute';
+import CarrerRoadmap from './features pages/carrer roadmap/CarrerRoadmap';
+import Recommendations from './features pages/Recommendations/Recommendations';
 
 const queryClient = new QueryClient()
 
@@ -66,7 +68,11 @@ const router = createBrowserRouter([
     },
     {
       path: '/roadMap',
-      element:<roadMap></roadMap>
+      element:<CarrerRoadmap></CarrerRoadmap>
+    },
+    {
+      path: '/recommendations',
+      element:<Recommendations></Recommendations>
     },
     ],
   },
