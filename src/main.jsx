@@ -31,6 +31,7 @@ import {
 import PrivateRoute from './Route/PrivateRoute';
 import CarrerRoadmap from './features pages/carrer roadmap/CarrerRoadmap';
 import Recommendations from './features pages/Recommendations/Recommendations';
+import CareerPathApp from './features pages/CareerPath/CareerPathApp';
 
 const queryClient = new QueryClient()
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
     {
       path: '/recommendations',
       element:<Recommendations></Recommendations>
+    },
+    {
+      path: '/careerPathApp',
+      element:<CareerPathApp></CareerPathApp>
     },
     ],
   },

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SectionTitle from '../../SectionTitle/SectionTitle';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 function Recommendations() {
   const [courses, setCourses] = useState([]);
@@ -9,7 +10,7 @@ function Recommendations() {
   const [filteredCourses, setFilteredCourses] = useState([]);
 
   useEffect(() => {
-    axios.get('../../../public/CourseRecommendations.json')
+    axios.get('/CourseRecommendations.json')
       .then(response => {
         setCourses(response.data);
         setFilteredCourses(response.data);
@@ -32,6 +33,11 @@ function Recommendations() {
        </Helmet> 
       <SectionTitle  subHeading="Here Recommendations Courses" 
             heading="Recommendations"></SectionTitle>
+      <div className="mb-4 pl-8">
+      <Link to="/careerPathApp"> 
+            <button className="btn btn-outline btn-accent">Career Path</button>
+            </Link> 
+        </div>      
       <div className="mb-4 pl-8">
         <input
           type="text"
