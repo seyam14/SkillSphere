@@ -145,7 +145,51 @@
       "salary_range_bangladesh": "BDT 40,000 - BDT 70,000 per month"
     },
     {
-      "title": "Higher Study Options",
+      "title": "Software Quality Assurance (SQA) Engineer",
+      "responsibilities": [
+        "Develop and execute test plans and test cases to ensure the quality and reliability of software products.",
+        "Identify and report defects, and work with development teams to resolve issues.",
+        "Automate test cases and regression testing processes to improve efficiency."
+      ],
+      "requirements": [
+        "Knowledge of software testing methodologies and tools (e.g., Selenium, JIRA, TestRail).",
+        "Understanding of software development processes and lifecycle.",
+        "Strong attention to detail and analytical skills."
+      ],
+      "related_companies": [
+        "Adobe",
+        "Spotify",
+        "Zoom"
+      ],
+      "ways": [
+        "ISTQB Certification",
+        "Certified Agile Tester (CAT)",
+        "Certified Software Quality Analyst (CSQA)"
+      ],
+      "salary_range_bangladesh": "BDT 35,000 - BDT 60,000 per month"
+    },
+    {
+      "title": "IT Specialist",
+      "responsibilities": [
+        "Provide technical support to end-users on hardware and software issues.",
+        "Troubleshoot IT problems and implement solutions.",
+        "Manage IT assets, including procurement and inventory."
+      ],
+      "requirements": [
+        "Knowledge of computer hardware and software systems.",
+        "Strong problem-solving and communication skills.",
+        "Ability to work well independently and in a team."
+      ],
+      "ways": ["MS Excel","MS Word","Basic Computer Knowledge"],
+      "related_companies": [
+        "Apple",
+        "Microsoft",
+        "HP"
+      ],
+      "salary_range_bangladesh": "BDT 25,000 - BDT 45,000 per month"
+    },
+    {
+      "title": "Higher Study ",
       "responsibilities": [
         "Pursue Master's degrees in specialized fields such as:",
         "- Computer Science",
@@ -161,8 +205,8 @@
         "- AWS Certified Solutions Architect",
         "- Google Certified Professional Cloud Architect"
       ],
-      "related_companies": [],
-      "ways": [],
+      "related_companies": ["BUET","DU","NSU"],
+      "ways": ["IELTS","MOI","Duolingo"],
       "salary_range_bangladesh": "Varies based on specialization and level of education"
     }
   ]
