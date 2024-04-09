@@ -15,7 +15,7 @@ const UserProfileSettings = () => {
   const { isPending, isError, error, data: datas, refetch } = useQuery({
     queryKey: ["data", "user"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/user/${user.email}`);
+      const res = await fetch(`https://skillsphere-server-side.vercel.app/user/${user.email}`);
       return res.json();
     },
   });

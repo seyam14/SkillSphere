@@ -1,5 +1,7 @@
 import  { useState, useEffect } from 'react';
 import CareerPath from './CareerPath';
+import { Helmet } from 'react-helmet';
+import SectionTitle from '../../SectionTitle/SectionTitle';
 
 
 function CareerPathApp() {
@@ -21,7 +23,11 @@ function CareerPathApp() {
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">Career Paths</h1>
+      <Helmet>
+        <title>LMS|Career Paths</title>
+       </Helmet> 
+      <SectionTitle  subHeading="Here Career Paths and ways detalis" 
+            heading="Career Paths"></SectionTitle>
       {data && data.career_paths.map((career, index) => (
         <CareerPath
           key={index}
