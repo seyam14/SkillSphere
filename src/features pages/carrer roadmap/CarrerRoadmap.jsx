@@ -16,7 +16,7 @@ const CarrerRoadmap = () => {
           <img
             src={image}
             alt={`Image ${index + 1}`}
-            className="max-w-full h-auto"
+            className="max-w-full h-auto border shadow-xl "
             style={{ maxHeight: '450px', width: '100%' }}
           />
         </div>
