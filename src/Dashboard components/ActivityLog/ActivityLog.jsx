@@ -13,6 +13,17 @@ const ActivityLog = ({ userEmail }) => {
         setUserCourses(filteredCourses);
     }, [userEmail]);
 
+    const removeCourse = (index) => {
+        // Create a copy of userCourses
+        const updatedCourses = [...userCourses];
+        // Remove the course at the specified index
+        updatedCourses.splice(index, 1);
+        // Update state with the new courses array
+        setUserCourses(updatedCourses);
+        // Optionally, you can update the localStorage here as well
+        localStorage.setItem("cart", JSON.stringify(updatedCourses));
+    };
+
     return (
         <div>
             <SectionTitle subHeading="Course Information" heading="Courses Enrolled by You" />
@@ -25,16 +36,20 @@ const ActivityLog = ({ userEmail }) => {
                             <th>Category</th>
                             <th>Description</th>
                             <th>Price</th>
+                            <th>Action</th> {/* Added column for action */}
                         </tr>
                     </thead>
                     <tbody>
                         {userCourses.map((course, index) => (
                             <tr key={index}>
-                                <th>{index + 1}</th>
+                                <td>{index + 1}</td>
                                 <td>{course.CourseTitle}</td>
                                 <td>{course.category}</td> 
                                 <td>{course.Description}</td>
                                 <td>{course.Price}</td>
+                                <td>
+                                    <button className="btn btn-secondary" onClick={() => removeCourse(index)}>Remove</button>
+                                </td> 
                             </tr>
                         ))}
                     </tbody>
