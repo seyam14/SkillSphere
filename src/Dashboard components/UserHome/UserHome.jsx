@@ -8,11 +8,11 @@ const UserHome = () => {
             <img
             src={img}
             alt=''
-            className="max-w-full h-auto border shadow-xl "
+            className="max-w-full h-auto border shadow-xl m-3"
             style={{ maxHeight: '450px', width: '100%' }}
             />
             <h2 className="text-3xl">
-                <span>Dear,User</span>
+                <span>Dear,User  </span>
                 {
                     user?.displayName ? user.displayName : 'Back'
                 }
