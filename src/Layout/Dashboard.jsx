@@ -4,6 +4,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { SiCoursera,SiWheniwork } from "react-icons/si";
 import { RiUserSettingsFill } from "react-icons/ri";
+import { MdOutlineSell } from "react-icons/md";
 
 const Dashboard = () => {
 
@@ -37,11 +38,7 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink to="/dashboard/sellCourseInfo">
-                                SellCourseInfo
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/sellCourseInfo">
+                                <MdOutlineSell />
                                 SellCourseInfo
                                 </NavLink>
                             </li>
