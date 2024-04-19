@@ -91,6 +91,7 @@ const AddCourse = () => {
               <option value="Web Development">Web Development</option>
               <option value="Digital Marketing">Digital Marketing</option>
               <option value="Graphics Design">Graphics Design</option>
+              <option value="Graphics Design">others</option>
             </select>
           </div>
         </div>

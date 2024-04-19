@@ -35,6 +35,16 @@ const Dashboard = () => {
                                 <SiCoursera/>
                                 AddCourse</NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/sellCourseInfo">
+                                SellCourseInfo
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/sellCourseInfo">
+                                SellCourseInfo
+                                </NavLink>
+                            </li>
 
                         </>
                    :
@@ -54,6 +64,7 @@ const Dashboard = () => {
                                     <RiUserSettingsFill />
                                     Profile Settings</NavLink>
                                 </li>
+                                
                         </>
                   }
                     

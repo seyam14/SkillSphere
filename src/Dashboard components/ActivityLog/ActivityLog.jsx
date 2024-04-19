@@ -32,7 +32,7 @@ const ActivityLog = ({ userEmail }) => {
                             <tr key={index}>
                                 <th>{index + 1}</th>
                                 <td>{course.CourseTitle}</td>
-                                <td>{course.category}</td> {/* Assuming category is present in the course object */}
+                                <td>{course.category}</td> 
                                 <td>{course.Description}</td>
                                 <td>{course.Price}</td>
                             </tr>

@@ -32,6 +32,9 @@ const Navbar = () => {
     <NavLink className="font-bold "  to='/recommendations'>Recommendations</NavLink>
     </li>
     <li>
+        <NavLink className="font-bold"  to='/seller'>Course Sell</NavLink>
+    </li>
+    <li>
         <NavLink className="font-bold"  to='/contact'>Contact</NavLink>
     </li>
     <li>

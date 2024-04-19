@@ -32,6 +32,8 @@ import PrivateRoute from './Route/PrivateRoute';
 import CarrerRoadmap from './features pages/carrer roadmap/CarrerRoadmap';
 import Recommendations from './features pages/Recommendations/Recommendations';
 import CareerPathApp from './features pages/CareerPath/CareerPathApp';
+import CourseSellForm from './features pages/courseSellForm/courseSellForm';
+import SellCourseInfo from './Dashboard components/sellCourseInfo/sellCourseInfo';
 
 const queryClient = new QueryClient()
 
@@ -58,6 +60,10 @@ const router = createBrowserRouter([
       path: '/courses',
       element: <Courses></Courses>,
       loader : () => fetch('https://skillsphere-server-side.vercel.app/addcourse'),
+    },
+    {
+      path: '/seller',
+      element:<CourseSellForm></CourseSellForm>
     },
     {
       path: '/contact',
@@ -98,6 +104,7 @@ const router = createBrowserRouter([
         element: <UserProfileSettings></UserProfileSettings>
       },
       
+      
         // admin 
         {
           path: 'adminHome',
@@ -110,6 +117,11 @@ const router = createBrowserRouter([
         {
           path: 'addcourse',
           element: <AddCourse></AddCourse>
+        },
+        {
+          path: 'sellCourseInfo',
+          element: <SellCourseInfo></SellCourseInfo>,
+          loader : () => fetch('https://skillsphere-server-side.vercel.app/seller'),
         },
     ],
   }, 
