@@ -8,7 +8,7 @@ function CareerPathApp() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch('/carrarpath.json');
         const jsonData = await response.json();
@@ -18,7 +18,7 @@ function CareerPathApp() {
       }
     };
 
-    fetch();
+    fetchData();
   }, []);
 
   return (
