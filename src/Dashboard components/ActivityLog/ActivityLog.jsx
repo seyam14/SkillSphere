@@ -1,4 +1,3 @@
-// ActivityLog.js
 import { useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 
@@ -6,7 +5,6 @@ const ActivityLog = ({ userEmail }) => {
     const [userCourses, setUserCourses] = useState([]);
 
     useEffect(() => {
-        // Fetch courses from local storage
         const cartData = JSON.parse(localStorage.getItem("cart")) || [];
         // Filter courses by user email
         const filteredCourses = cartData.filter(course => course.userEmail === userEmail);
@@ -14,13 +12,11 @@ const ActivityLog = ({ userEmail }) => {
     }, [userEmail]);
 
     const removeCourse = (index) => {
-        // Create a copy of userCourses
         const updatedCourses = [...userCourses];
-        // Remove the course at the specified index
+        // Remove the course 
         updatedCourses.splice(index, 1);
-        // Update state with the new courses array
         setUserCourses(updatedCourses);
-        // Optionally, you can update the localStorage here as well
+        //  update the localStorage 
         localStorage.setItem("cart", JSON.stringify(updatedCourses));
     };
 
@@ -36,7 +32,7 @@ const ActivityLog = ({ userEmail }) => {
                             <th>Category</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Action</th> {/* Added column for action */}
+                            <th>Action</th> 
                         </tr>
                     </thead>
                     <tbody>

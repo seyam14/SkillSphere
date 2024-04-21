@@ -1,6 +1,3 @@
-
-// import logo from '../../assets/LMS.svg';
-
 import { Helmet } from "react-helmet";
 
 const AboutPage = () => {
@@ -11,7 +8,6 @@ const AboutPage = () => {
        </Helmet>
     <div className="bg-gray-300  justify-center items-center">  
       <div className="w-full p-8 bg-white rounded-lg shadow-md">
-        {/* <img src={logo} alt="Logo" className="mx-auto mb-6" /> */}
         <h1 className="text-2xl font-semibold text-center text-gray-800 mb-4"> Learning Management System</h1>
         <p className="text-gray-700 mb-4">
           Our Learning Management System (LMS) is designed to provide a seamless learning experience for both students and educators. With a user-friendly interface and powerful features, our platform empowers users to create, manage, and deliver engaging educational content.

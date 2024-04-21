@@ -2,6 +2,7 @@ import  { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import SectionTitle from '../../SectionTitle/SectionTitle';
 
 const CourseSellForm = () => {
     const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ const CourseSellForm = () => {
                 title: 'Success!',
                 text: 'Course has been successfully submitted!',
             });
-            // Clear form fields after successful submission
+            // Clear form fields after successful like refetch
             setFormData({
                 title: '',
                 description: '',
@@ -65,7 +66,8 @@ const CourseSellForm = () => {
             <Helmet>
                 <title>LMS|sell course</title>
             </Helmet>
-           <h2 className="text-3xl font-extrabold text-center">sell course </h2>
+            <SectionTitle  subHeading="if you can sell your course then fillup the form.we will contact if needed" 
+            heading="Sell Course form"></SectionTitle>
             <form onSubmit={handleSubmit} className="bg-sky-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-4">
                     <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">Title</label>

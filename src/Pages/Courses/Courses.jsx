@@ -1,13 +1,8 @@
-
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../SectionTitle/SectionTitle";
-
 import CourseCategory from "../CourseCategory/CourseCategory";
 
-
 const Courses = () => {
-    
-    
     return (
      <div>
         <Helmet>

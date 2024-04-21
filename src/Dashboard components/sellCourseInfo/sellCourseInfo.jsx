@@ -6,13 +6,12 @@ const SellCourseInfo = () => {
     const [sellCourseData, setSellCourseData] = useState([]);
 
     useEffect(() => {
-        fetchData();
+        fetch();
     }, []);
 
-    const fetchData = async () => {
+    const fetch = async () => {
         try {
             const response = await axios.get('https://skillsphere-server-side.vercel.app/seller');
-            // Assuming response.data is an array
             setSellCourseData(response.data);
         } catch (error) {
             console.error('Error fetching seller course data:', error.message);
@@ -21,7 +20,7 @@ const SellCourseInfo = () => {
 
     return (
         <div>
-            <SectionTitle subHeading="................." heading="Seller Course Information" />
+            <SectionTitle subHeading="......." heading="Seller Course Information" />
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     <thead>
@@ -31,7 +30,7 @@ const SellCourseInfo = () => {
                             <th>Skills</th>
                             <th>Price</th>
                             <th>PhoneNumber</th>
-                            <th>File</th>
+                            {/* <th>File</th> */}
                         </tr>
                     </thead>
                     <tbody>

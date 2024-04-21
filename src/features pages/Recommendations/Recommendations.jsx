@@ -57,7 +57,7 @@ function Recommendations() {
           <div key={course["Course Name"]} className="bg-sky-300 shadow-lg rounded-lg overflow-hidden">
             <div className="p-4">
               <h2 className="text-xl font-bold mb-2">{course["Course Name"]}</h2>
-              <p className=" mb-4">{course["Course Description"].slice(0, 20)}...</p>
+              <p className=" mb-4">{course["Course Description"].slice(0, 50)} ...more </p>
               <div className="flex justify-between items-center">
                 <p className="text-sm ">Difficulty Level: {course["Difficulty Level"]}</p>
                 <p className="text-sm ">Rating: {course["Course Rating"]}</p>

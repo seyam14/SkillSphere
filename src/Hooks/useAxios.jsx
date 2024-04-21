@@ -1,15 +1,9 @@
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import useAuth from "./useAuth";
-
 const axiosSecure = axios.create({
     baseURL: 'https://skillsphere-server-side.vercel.app'
 })
 
 const useAxios = () => {
-   
-    // const navigate = useNavigate();
-    // const { logOut } = useAuth();
 
     // request interceptor to add authorization header for every secure call to teh api
     axiosSecure.interceptors.request.use(function (config) {

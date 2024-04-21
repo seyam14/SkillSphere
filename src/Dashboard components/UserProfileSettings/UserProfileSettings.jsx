@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
+import { useForm } from "react-hook-form"
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
@@ -10,7 +10,7 @@ const UserProfileSettings = () => {
   const image_hosting_key = import.meta.env.VITE_IMAGE_KEY;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
   const axiosPublic = UseAxiosPublic();
-  const { register, handleSubmit } = useForm(); // Use useForm from react-hook-form
+  const { register, handleSubmit } = useForm(); 
 
   const { isPending, isError, error, data: datas, refetch } = useQuery({
     queryKey: ["data", "user"],
@@ -20,9 +20,9 @@ const UserProfileSettings = () => {
     },
   });
 
-  if (isPending) {
-    return <>loading....................</>;
-  }
+  if (isPending) 
+    return <>loading.......</>;
+  
 
   if (isError) {
     return <span>Error: {error.message}</span>;
