@@ -64,6 +64,7 @@ const Login = () => {
                     title: 'Login Successful',
                     text: 'You have successfully logged in!',
                 });
+                Navigate('/'); 
             });
     }
         
