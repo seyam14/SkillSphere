@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader : () => fetch('https://skillsphere-server-side.vercel.app/addcourse'),
+        loader : () => fetch('http://localhost:5000/addcourse'),
       },
       {
         path: '/login',
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
     {
       path: '/courses',
       element: <Courses></Courses>,
-      loader : () => fetch('https://skillsphere-server-side.vercel.app/addcourse'),
+      loader : () => fetch('http://localhost:5000/addcourse'),
     },
     {
       path: '/seller',
@@ -121,7 +121,7 @@ const router = createBrowserRouter([
         {
           path: 'sellCourseInfo',
           element: <SellCourseInfo></SellCourseInfo>,
-          loader : () => fetch('https://skillsphere-server-side.vercel.app/seller'),
+          loader : () => fetch('http://localhost:5000/seller'),
         },
     ],
   }, 

@@ -36,7 +36,7 @@ const Register = () => {
           const user = {name,phoneNumber, email, createdAt: createdAt };
   
           // Send user data to your server (Assuming you have a server)
-          fetch('https://skillsphere-server-side.vercel.app/user', {
+          fetch('http://localhost:5000/user', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'

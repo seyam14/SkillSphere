@@ -11,7 +11,7 @@ const SellCourseInfo = () => {
 
     const fetch = async () => {
         try {
-            const response = await axios.get('https://skillsphere-server-side.vercel.app/seller');
+            const response = await axios.get('http://localhost:5000/seller');
             setSellCourseData(response.data);
         } catch (error) {
             console.error('Error fetching seller course data:', error.message);

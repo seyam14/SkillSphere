@@ -18,6 +18,7 @@ const CategoryCard = ({ cart }) => {
             courseId: _id,
             email: user.email,
             CourseTitle,
+            Description,
             DeadLine,
             Price
         }
