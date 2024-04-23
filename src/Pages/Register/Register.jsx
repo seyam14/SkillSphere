@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Register = () => {
     const [registerError, setRegisterError] = useState('');
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
   
     const handleRegister = e => {
       e.preventDefault();
@@ -46,6 +47,7 @@ const Register = () => {
             .then(data => {
               if (data.insertedId) {
                 Swal.fire("Registration Successful!", "You are now registered.", "success");
+                navigate("/");
               }
             })
             .catch(error => {
