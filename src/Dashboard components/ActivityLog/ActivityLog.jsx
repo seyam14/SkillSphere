@@ -4,6 +4,7 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import useCart from "../../Hooks/useCart";
 import useAxios from "../../Hooks/useAxios";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ActivityLog = () => {
     const [cart, refetch] = useCart();
@@ -71,10 +72,9 @@ const ActivityLog = () => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button
-                                        className="btn btn-secondary">
-                                        pay
-                                    </button>
+                                <Link to={`/dashboard/payment/${course._id}/${course?.Price}`}>
+                                <button className="btn btn-secondary m-2">Pay </button>
+                               </Link>
                                 </td>
                             </tr>
                         ))}

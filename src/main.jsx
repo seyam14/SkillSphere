@@ -34,6 +34,7 @@ import Recommendations from './features pages/Recommendations/Recommendations';
 import CareerPathApp from './features pages/CareerPath/CareerPathApp';
 import CourseSellForm from './features pages/courseSellForm/courseSellForm';
 import SellCourseInfo from './Dashboard components/sellCourseInfo/sellCourseInfo';
+import Payment from './features pages/Payment/Payment';
 
 const queryClient = new QueryClient()
 
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
           path: 'sellCourseInfo',
           element: <SellCourseInfo></SellCourseInfo>,
           loader : () => fetch('http://localhost:5000/seller'),
+        },
+        {
+          path: 'payment/:_id/:Price',
+          element: <Payment></Payment>
         },
     ],
   }, 
