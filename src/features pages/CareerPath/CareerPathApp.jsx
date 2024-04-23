@@ -3,14 +3,13 @@ import CareerPath from './CareerPath';
 import { Helmet } from 'react-helmet';
 import SectionTitle from '../../SectionTitle/SectionTitle';
 
-
 function CareerPathApp() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/carrarpath.json');
+        const response = await fetch('https://skillsphere-server-side.vercel.app/careerPath');
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
@@ -25,10 +24,9 @@ function CareerPathApp() {
     <div className="p-8">
       <Helmet>
         <title>LMS|Career Paths</title>
-       </Helmet> 
-      <SectionTitle  subHeading="Here Career Paths and ways detalis" 
-            heading="Career Paths"></SectionTitle>
-      {data && data.career_paths.map((career, index) => (
+      </Helmet>
+      <SectionTitle subHeading="Here Career Paths and ways details" heading="Career Paths" />
+      {data && data.map((career, index) => (
         <CareerPath
           key={index}
           title={career.title}
