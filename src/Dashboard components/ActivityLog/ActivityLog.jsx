@@ -1,24 +1,10 @@
-import { useEffect, useState } from "react";
+
 import SectionTitle from "../../SectionTitle/SectionTitle";
 
-const ActivityLog = ({ userEmail }) => {
-    const [userCourses, setUserCourses] = useState([]);
+const ActivityLog = () => {
+    
 
-    useEffect(() => {
-        const cartData = JSON.parse(localStorage.getItem("cart")) || [];
-        // Filter courses by user email
-        const filteredCourses = cartData.filter(course => course.userEmail === userEmail);
-        setUserCourses(filteredCourses);
-    }, [userEmail]);
-
-    const removeCourse = (index) => {
-        const updatedCourses = [...userCourses];
-        // Remove the course 
-        updatedCourses.splice(index, 1);
-        setUserCourses(updatedCourses);
-        //  update the localStorage 
-        localStorage.setItem("cart", JSON.stringify(updatedCourses));
-    };
+    
 
     return (
         <div>
@@ -32,23 +18,23 @@ const ActivityLog = ({ userEmail }) => {
                             <th>Category</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Action</th> 
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                         {userCourses.map((course, index) => (
-                            <tr key={index}>
+                            <tr key={course._id}>
                                 <td>{index + 1}</td>
-                                <td>{course.CourseTitle}</td>
-                                <td>{course.category}</td> 
-                                <td>{course.Description}</td>
-                                <td>{course.Price}</td>
+                                <td>{course.title}</td>
+                                <td>{course.category}</td>
+                                <td>{course.description}</td>
+                                <td>{course.price}</td>
                                 <td>
-                                    <button className="btn btn-secondary" onClick={() => removeCourse(index)}>Remove</button>
-                                </td> 
+                                    <button className="btn btn-secondary" onClick={() => removeCourse(course._id)}>Remove</button>
+                                </td>
                             </tr>
                         ))}
-                    </tbody>
+                    </tbody> */}
                 </table>
             </div>
         </div>
