@@ -36,6 +36,7 @@ import CourseSellForm from './features pages/courseSellForm/courseSellForm';
 import SellCourseInfo from './Dashboard components/sellCourseInfo/sellCourseInfo';
 import Payment from './features pages/Payment/Payment';
 import PaymentHistory from './features pages/Payment/PaymentHistory';
+import CourseDetails from './Dashboard components/CourseDetails/CourseDetails';
 
 const queryClient = new QueryClient()
 
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       path: '/careerPathApp',
       element:<CareerPathApp></CareerPathApp>
     },
+    {
+      path: '/course-details/:courseId',
+      element: <CourseDetails></CourseDetails>
+    },
     ],
   },
   {
@@ -105,6 +110,15 @@ const router = createBrowserRouter([
         path: 'settings',
         element: <UserProfileSettings></UserProfileSettings>
       },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
+      },
+      
       
       
         // admin 
@@ -125,14 +139,7 @@ const router = createBrowserRouter([
           element: <SellCourseInfo></SellCourseInfo>,
           loader : () => fetch('http://localhost:5000/seller'),
         },
-        {
-          path: 'payment',
-          element: <Payment></Payment>
-        },
-        {
-          path: 'paymentHistory',
-          element: <PaymentHistory></PaymentHistory>
-        },
+        
     ],
   }, 
 ]);
