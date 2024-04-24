@@ -1,15 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
-import useAxios from "../../Hooks/useAxios";
-import useCart from "../../Hooks/useCart";
-import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAxios from "../../Hooks/useAxios";
+import useAuth from "../../Hooks/useAuth";
+import useCart from "../../Hooks/useCart";
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ Price }) => {
+const CheckoutForm = () => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
+
 
     const stripe = useStripe();
     const elements = useElements();
@@ -18,15 +19,23 @@ const CheckoutForm = ({ Price }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
+    const totalPrice = cart.length ? cart.reduce((total, item) => {
+        const price = parseFloat(item?.Price); 
+        return isNaN(price) ? total : total + price; 
+    }, 0) : 0;
+    console.log(totalPrice);
+
+
     useEffect(() => {
-        if (Price > 0) {
-            axiosSecure.post('/create-payment-intent', { price: Price }) // Use lowercase 'price'
+        if (totalPrice > 0) {
+            axiosSecure.post('/create-payment-intent', { price: totalPrice })
                 .then(res => {
                     console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
                 })
         }
-    }, [axiosSecure, Price])
+
+    }, [axiosSecure, totalPrice])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -67,30 +76,31 @@ const CheckoutForm = ({ Price }) => {
             if (paymentIntent.status === 'succeeded') {
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
-            }
-            // now save the payment in the database
-            const payment = {
-                email: user.email,
-                Price: Price,
-                transactionId: paymentIntent.id,
-                date: new Date(), // utc date convert. use moment js to 
-                cartIds: cart.map(item => item._id),
-                status: 'pending'
-            }
-            const res = await axiosSecure.post('/payments', payment);
-            console.log('payment saved', res.data);
-            refetch();
-            if (res.data?.paymentResult?.insertedId) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Thank you for loting me ",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate('/dashboard/paymentHistory')
-            }
         }
+        // now save the payment in the database
+        const payment = {
+            email: user.email,
+            price: totalPrice,
+            transactionId: paymentIntent.id,
+            date: new Date(), // utc date convert. use moment js to 
+            cartIds: cart.map(item => item._id),
+            CourseTitle:cart.map(CourseTitle => CourseTitle),
+            status: 'complete'
+        }
+        const res = await axiosSecure.post('/payments', payment);
+        console.log('payment saved', res.data);
+        refetch();
+                if (res.data?.paymentResult?.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Thank you for loting me ",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/dashboard/paymentHistory')
+       }
+     }
     }
 
     return (
@@ -111,7 +121,8 @@ const CheckoutForm = ({ Price }) => {
                     },
                 }}
             />
-            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
+            
+            <button className="btn btn-sm btn-primary my-4" type="submit"  disabled={!stripe  || !clientSecret}>
                 Pay
             </button>
             <p className="text-red-600">{error}</p>
@@ -119,5 +130,4 @@ const CheckoutForm = ({ Price }) => {
         </form>
     );
 };
-
 export default CheckoutForm;
