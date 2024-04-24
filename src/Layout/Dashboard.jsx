@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import useAdmin from "../Hooks/useAdmin";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaUsers } from "react-icons/fa";
+import { FaHome, FaList, FaUsers } from "react-icons/fa";
 import { SiCoursera,SiWheniwork } from "react-icons/si";
 import { RiUserSettingsFill } from "react-icons/ri";
 import { MdOutlineSell } from "react-icons/md";
@@ -55,6 +55,11 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/activity">
                                     <SiWheniwork />
                                     Activity</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/paymentHistory">
+                                        <FaList></FaList>
+                                        Real Payment History</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/settings">

@@ -1,131 +1,122 @@
-/* eslint-disable no-unused-vars */
-import  { useState, useEffect, useContext } from 'react';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import axios from 'axios';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useEffect, useState } from "react";
+import useAxios from "../../Hooks/useAxios";
+import useCart from "../../Hooks/useCart";
+import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-
-
-
-const CheckoutForm = ({ Price, courseId }) => {
+const CheckoutForm = ({ Price }) => {
     const [error, setError] = useState('');
-    const stripe = useStripe();
+    const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
-    const {user} = useContext(AuthContext);
-    // console.log(user.displayName);
-    const [clientSecret, setClientSecret] = useState();
+
+    const stripe = useStripe();
     const elements = useElements();
+    const axiosSecure = useAxios();
+    const [cart, refetch] = useCart();
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const handlePaymentIntent = async () => {
-            try {
-                const parsedSalary = parseFloat(Price);
-                if (isNaN(parsedSalary)) {
-                    console.error('Invalid salary:', Price);
-                    return;
-                }
-
-                const response = await axios.post('http://localhost:5000/create-payment-intent', {
-                    price: parsedSalary,
-                    courseId
-                });
-
-                setClientSecret(response.data.clientSecret);
-                console.log('Client Secret:', response.data.clientSecret);
-            } catch (error) {
-                console.error('Error creating payment intent:', error);
-            }
-        };
-
-        handlePaymentIntent();
-    }, [Price, courseId]);
+        if (Price > 0) {
+            axiosSecure.post('/create-payment-intent', { price: Price }) // Use lowercase 'price'
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
+    }, [axiosSecure, Price])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         if (!stripe || !elements) {
-            return;
+            return
         }
+        const card = elements.getElement(CardElement)
 
-        const card = elements.getElement(CardElement);
-
+        if (card === null) {
+            return
+        }
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
-        });
-
+        })
         if (error) {
             console.log('payment error', error);
             setError(error.message);
-        } else {
-            console.log('payment method', paymentMethod);
+        }
+        else {
+            console.log('payment method', paymentMethod)
             setError('');
         }
-
-        // confirm card payment
-        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
-            clientSecret,
-            {
-        payment_method: {
-            card: card,
-            billing_details: {
-                name: user?.displayName || 'anonymous',
-                // email: user?.email || 'anonymous'
-
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    email: user?.email || 'anonymous',
+                    name: user?.displayName || 'anonymous'
                 }
             }
         })
-        if(confirmError){
+        if (confirmError) {
             console.log('confirm error')
         }
-        else{
-            console.log('payment intent', paymentIntent);
-            if(paymentIntent.status === 'succeeded')
-            console.log('transaction id', paymentIntent.id);
-            setTransactionId(paymentIntent.id)
-
+        else {
+            console.log('payment intent', paymentIntent)
+            if (paymentIntent.status === 'succeeded') {
+                console.log('transaction id', paymentIntent.id);
+                setTransactionId(paymentIntent.id);
+            }
+            // now save the payment in the database
+            const payment = {
+                email: user.email,
+                Price: Price,
+                transactionId: paymentIntent.id,
+                date: new Date(), // utc date convert. use moment js to 
+                cartIds: cart.map(item => item._id),
+                status: 'pending'
+            }
+            const res = await axiosSecure.post('/payments', payment);
+            console.log('payment saved', res.data);
+            refetch();
+            if (res.data?.paymentResult?.insertedId) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Thank you for loting me ",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/dashboard/paymentHistory')
+            }
         }
-    };
+    }
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <form
-                onSubmit={handleSubmit}
-                className="w-full max-w-md p-8 bg-white rounded-md shadow-md"
-            >
-                <h2 className="text-2xl font-semibold mb-6 text-center">Secure Payment</h2>
-                <div className="mb-6">
-                    <label htmlFor="cardNumber" className="block text-gray-700 text-sm font-bold mb-2">
-                        Card Information
-                    </label>
-                    <CardElement
-                        options={{
-                            style: {
-                                base: {
-                                    fontSize: '16px',
-                                    color: '#424770',
-                                    '::placeholder': {
-                                        color: '#aab7c4',
-                                    },
-                                },
-                                invalid: {
-                                    color: '#9e2146',
-                                },
+        <form onSubmit={handleSubmit}>
+            <CardElement
+                options={{
+                    style: {
+                        base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            '::placeholder': {
+                                color: '#aab7c4',
                             },
-                        }}
-                    />
-                </div>
-                <button
-                    type="submit"
-                    disabled={!stripe || !clientSecret}
-                    className="w-full bg-blue-500 text-white py-3 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-                >
-                    Pay
-                </button>
-                <p className='text-red-500'>{error}</p>
-                {transactionId && <p className='text-green-500 mt-3'>tnxId: {transactionId}</p>}
-            </form>
-        </div>
+                        },
+                        invalid: {
+                            color: '#9e2146',
+                        },
+                    },
+                }}
+            />
+            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
+                Pay
+            </button>
+            <p className="text-red-600">{error}</p>
+            {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
+        </form>
     );
 };
 
