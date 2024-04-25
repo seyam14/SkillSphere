@@ -1,6 +1,6 @@
 import axios from "axios";
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://skillsphere-server-side.vercel.app'
 })
 
 const useAxios = () => {

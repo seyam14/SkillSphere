@@ -9,7 +9,7 @@ function CareerPathApp() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/careerPath');
+        const response = await fetch('https://skillsphere-server-side.vercel.app/careerPath');
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {

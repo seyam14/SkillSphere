@@ -36,7 +36,8 @@ import CourseSellForm from './features pages/courseSellForm/courseSellForm';
 import SellCourseInfo from './Dashboard components/sellCourseInfo/sellCourseInfo';
 import Payment from './features pages/Payment/Payment';
 import PaymentHistory from './features pages/Payment/PaymentHistory';
-import CourseDetails from './Dashboard components/CourseDetails/CourseDetails';
+import CourseDetails from './features pages/CourseDetails/CourseDetails';
+
 
 const queryClient = new QueryClient()
 
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader : () => fetch('http://localhost:5000/addcourse'),
+        loader : () => fetch('https://skillsphere-server-side.vercel.app/addcourse'),
       },
       {
         path: '/login',
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
     {
       path: '/courses',
       element: <Courses></Courses>,
-      loader : () => fetch('http://localhost:5000/addcourse'),
+      loader : () => fetch('https://skillsphere-server-side.vercel.app/addcourse'),
     },
     {
       path: '/seller',
@@ -89,8 +90,9 @@ const router = createBrowserRouter([
       element:<CareerPathApp></CareerPathApp>
     },
     {
-      path: '/course-details/:courseId',
-      element: <CourseDetails></CourseDetails>
+      path: '/details/:id',
+      element: <CourseDetails></CourseDetails>,
+      loader: ({params}) => fetch(`https://skillsphere-server-side.vercel.app/carts/${params.email}`)
     },
     ],
   },
@@ -137,7 +139,7 @@ const router = createBrowserRouter([
         {
           path: 'sellCourseInfo',
           element: <SellCourseInfo></SellCourseInfo>,
-          loader : () => fetch('http://localhost:5000/seller'),
+          loader : () => fetch('https://skillsphere-server-side.vercel.app/seller'),
         },
         
     ],

@@ -21,7 +21,7 @@ const AddCourse = () => {
     console.log(newJob);
 
          // send data to the server
-         fetch(`http://localhost:5000/addcourse`, {
+         fetch(`https://skillsphere-server-side.vercel.app/addcourse`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

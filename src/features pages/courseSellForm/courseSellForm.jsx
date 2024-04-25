@@ -34,7 +34,7 @@ const CourseSellForm = () => {
                 file: formData.file, 
             };
 
-            const response = await axios.post('http://localhost:5000/seller', formDataToSend);
+            const response = await axios.post('https://skillsphere-server-side.vercel.app/seller', formDataToSend);
             console.log(response.data);
             
             Swal.fire({

@@ -52,9 +52,9 @@ const ActivityLog = () => {
                 <h2 className="text-4xl">Items: {cart.length}</h2>
                 <h2 className="text-4xl">Total Price: {totalPrice.toFixed(2)}</h2> {/* Ensure totalPrice is rounded to 2 decimal places */}
                 {cart.length ? <Link to="/dashboard/payment">
-                    <button className="btn btn-primary">Pay</button>
+                    <button className="btn btn-secondary">Pay</button>
                 </Link> :
-                <button disabled className="btn btn-primary">Pay</button>
+                <button disabled className="btn btn-secondary">Pay</button>
                 }
             </div>
             <div className="overflow-x-auto">
@@ -83,6 +83,11 @@ const ActivityLog = () => {
                                         className="btn btn-ghost btn-lg">
                                         <FaTrashAlt className="text-red-600" />
                                     </button>
+                                    <Link
+                                        to={`/details/${course._id}`}
+                                        className="btn btn-primary ">
+                                        Details
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
