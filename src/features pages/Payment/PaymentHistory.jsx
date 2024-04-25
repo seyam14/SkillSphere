@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
-import { Link } from "react-router-dom"; // Assuming you are using React Router for navigation
+
 
 const PaymentHistory = () => {
     const { user } = useAuth();
@@ -39,9 +39,7 @@ const PaymentHistory = () => {
                                 <td>
                                     {payment.CourseTitle.map((course, index) => (
                                         <div key={index}>
-                                            <Link to={`/course-details/${course.courseId}`}>
-                                                {course.CourseTitle}
-                                            </Link>
+                                               {course.CourseTitle}
                                         </div>
                                     ))}
                                 </td>
