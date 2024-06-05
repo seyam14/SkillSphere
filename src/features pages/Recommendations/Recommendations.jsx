@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import SectionTitle from '../../SectionTitle/SectionTitle';
 import { Helmet } from 'react-helmet';
@@ -8,6 +8,7 @@ function Recommendations() {
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCourses, setFilteredCourses] = useState([]);
+  const [showFullDescription, setShowFullDescription] = useState({});
 
   useEffect(() => {
     axios.get('/CourseRecommendations.json')
@@ -19,6 +20,7 @@ function Recommendations() {
         console.error('Error fetching courses:', error);
       });
   }, []);
+
   const handleSearch = () => {
     const filtered = courses.filter(course =>
       course["Course Name"].toLowerCase().includes(searchTerm.toLowerCase())
@@ -26,18 +28,24 @@ function Recommendations() {
     setFilteredCourses(filtered);
   };
 
+  const toggleDescription = (courseName) => {
+    setShowFullDescription(prevState => ({
+      ...prevState,
+      [courseName]: !prevState[courseName]
+    }));
+  };
+
   return (
     <div className="container mx-auto">
-       <Helmet>
+      <Helmet>
         <title>LMS|Recommendations</title>
-       </Helmet> 
-      <SectionTitle  subHeading="Here Recommendations Courses" 
-            heading="Recommendations"></SectionTitle>
+      </Helmet>
+      <SectionTitle subHeading="Here Recommendations Courses" heading="Recommendations"></SectionTitle>
       <div className="mb-4 pl-8">
-      <Link to="/careerPathApp"> 
-            <button className="btn btn-outline btn-accent">Career Path</button>
-            </Link> 
-        </div>      
+        <Link to="/careerPathApp">
+          <button className="btn btn-outline btn-accent">Career Path</button>
+        </Link>
+      </div>
       <div className="mb-4 pl-8">
         <input
           type="text"
@@ -57,10 +65,15 @@ function Recommendations() {
           <div key={course["Course Name"]} className="bg-sky-300 shadow-lg rounded-lg overflow-hidden">
             <div className="p-4">
               <h2 className="text-xl font-bold mb-2">{course["Course Name"]}</h2>
-              <p className=" mb-4">{course["Course Description"].slice(0, 180)}...</p>
+              <p className="mb-4">
+                {showFullDescription[course["Course Name"]] ?
+                  course["Course Description"] :
+                  course["Course Description"].slice(0, 180) + " "}
+                <span className="text-blue-700 cursor-pointer" onClick={() => toggleDescription(course["Course Name"])}>{showFullDescription[course["Course Name"]] ? "less..." : "more..."}</span>
+              </p>
               <div className="flex justify-between items-center">
-                <p className="text-sm "> <span className='text-bold'>Difficulty Level:</span>  {course["Difficulty Level"]}</p>
-                <p className="text-sm "> <span className='text-bold' >Rating:</span>  {course["Course Rating"]}</p>
+                <p className="text-sm"> <span className='text-bold'>Difficulty Level:</span> {course["Difficulty Level"]}</p>
+                <p className="text-sm"> <span className='text-bold' >Rating:</span> {course["Course Rating"]}</p>
               </div>
             </div>
           </div>
