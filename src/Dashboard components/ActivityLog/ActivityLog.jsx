@@ -83,11 +83,7 @@ const ActivityLog = () => {
                                         className="btn btn-ghost btn-lg">
                                         <FaTrashAlt className="text-red-600" />
                                     </button>
-                                    <Link
-                                        to={`/details/${course._id}`}
-                                        className="btn btn-primary ">
-                                        Details
-                                    </Link>
+                                    
                                 </td>
                             </tr>
                         ))}

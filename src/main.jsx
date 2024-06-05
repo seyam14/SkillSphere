@@ -92,7 +92,7 @@ const router = createBrowserRouter([
     {
       path: '/details/:id',
       element: <CourseDetails></CourseDetails>,
-      loader: ({params}) => fetch(`https://skillsphere-server-side.vercel.app/carts/${params.email}`)
+      loader: ({params}) => fetch(`https://skillsphere-server-side.vercel.app/addcourse/${params.id}`)
     },
     ],
   },

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import useAxios from '../../Hooks/useAxios';
@@ -74,9 +74,14 @@ const CategoryCard = ({ cart }) => {
                     <span className="font-bold">Description: </span>
                     {Description}
                 </h2>
+                <Link to={`/details/${_id}`}
+                 className="btn btn-primary ">
+                 Details
+                </Link>
                 <button className="btn btn-neutral" onClick={handleAddToCart}>
                     add to cart
                 </button>
+
             </div>
         </div>
     );
