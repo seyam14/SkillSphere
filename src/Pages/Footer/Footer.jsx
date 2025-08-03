@@ -26,7 +26,7 @@ const Footer = () => {
 <footer className="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300">
   <aside className="items-center grid-flow-col">
     <img className='w-16 h-10' src={logo} alt=""  />
-    <p>Copyright © 2024 - All right reserved by SkillSphere </p>
+    <p>Copyright © {new Date().getFullYear()} - All right reserved by SkillSphere </p>
   </aside> 
   <nav className="md:place-self-center md:justify-self-end">
     <div className="grid grid-flow-col gap-4">
